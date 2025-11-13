@@ -9,7 +9,7 @@ SQUARES_X = 11  # Number of squares in X direction
 SQUARES_Y = 16  # Number of squares in Y direction
 SQUARE_LENGTH = 0.021  # Total square size (21mm)
 MARKER_LENGTH = 0.015  # Marker size (15mm)
-PATH_TO_IMAGES = "./image_calibration"
+PATH_TO_IMAGES = "./photo_calib/"
 
 def calibrate_camera():
     """
@@ -62,8 +62,8 @@ def calibrate_camera():
     
     # Get all images from the calibration folder
     image_files = glob.glob(os.path.join(PATH_TO_IMAGES, "*.jpg")) + \
-                  glob.glob(os.path.join(PATH_TO_IMAGES, "*.png"))
-    
+                  glob.glob(os.path.join(PATH_TO_IMAGES, "*.png")) + \
+                    glob.glob(os.path.join(PATH_TO_IMAGES, "*.JPEG")) 
     if len(image_files) == 0:
         print(f"No images found in {PATH_TO_IMAGES}")
         return None, None, None, None

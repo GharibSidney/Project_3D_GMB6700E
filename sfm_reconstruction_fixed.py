@@ -385,13 +385,14 @@ def main():
     print(f"Found {len(image_files)} images. Running reconstruction...")
 
     # Run reconstruction with robust defaults
-    points3D, colors, poses = reconstruct_sequence(image_files, K,
-                         max_reproj_error=0.2,   # very tight reprojection constraint
-                         min_angle_deg=4.0,      # strong geometric constraint
-                         max_distance=20.0,      # reject distant points
-                         min_matches=25,         # require many feature correspondences
-                         flann_checks=150,       # deeper FLANN search
-                         ratio_thresh=0.65
+    points3D, colors, poses = reconstruct_sequence(
+        image_files, K,
+        max_reproj_error=0.5,   # tighter reprojection constraint
+        min_angle_deg=3.0,      # ensures decent triangulation geometry
+        max_distance=30.0,      # remove far-outliers
+        min_matches=20,         # require stronger feature overlap
+        flann_checks=100,       # more exhaustive search
+        ratio_thresh=0.7
     )
 
     if points3D is None or len(points3D) == 0:

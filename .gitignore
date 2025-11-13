@@ -1,4 +1,9 @@
 image_calibration*
+*.jpg
+*.png
+*.jpeg
+*.heic
+*.HEIC
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

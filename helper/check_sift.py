@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-img = cv2.imread('image_calibration/IMG_5724.png')
+img = cv2.imread('../image_calibration/IMG_5724.png')
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 sift = cv2.SIFT_create()
