@@ -1,3 +1,5 @@
 numpy
 opencv-contrib-python
 heic2png
+matplotlib
+open3d
