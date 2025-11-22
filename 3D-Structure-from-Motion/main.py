@@ -26,8 +26,9 @@ def image_loader(dir_path:str, scale:float=2):
 
 def distortion_coefficient_loader():
     '''
-    This method will load the  distortion coefficient if it founds it.
-    It will return an empty numpy array otherwise.
+    This function will load the distortion coefficients if it founds the file.
+    It will return an empty numpy array otherwise. 
+    The expected dist_coeff.txt should look like k1 k2 p1 p2 k3
     '''
     path = "dist_coeff.txt"
 
@@ -39,10 +40,9 @@ def distortion_coefficient_loader():
         line = f.readline().strip()
 
         if not line:
-            return np.zeros((5, 1), dtype=np.float32)# If file is empty or line is empty →  return zeros
+            return np.zeros((5, 1), dtype=np.float32) # If file is empty or line is empty → return zeros
 
-        # Parse the distortion coefficients
-        dist_coeff = np.array(line.split(), dtype=np.float32).reshape(-1, 1) # reshape(-1, 1) does shape: (5,) → shape: (5, 1), for OpenCV compatibility
+        dist_coeff = np.array(line.split(), dtype=np.float32).reshape(-1, 1) # reshape(-1, 1) applies shape: (5,) → shape: (5, 1), for OpenCV compatibility
         return dist_coeff
 
 def downscale_image(img, scale=2):
