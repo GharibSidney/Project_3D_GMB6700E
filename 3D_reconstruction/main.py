@@ -58,7 +58,7 @@ def triangulation(point_2d_1, point_2d_2, projection_matrix_1, projection_matrix
 
 
 def pnp(obj_point, image_point, K, dist_coeff, rot_vector, initial):
-    if initial == 1:
+    if initial == 1: # Only applied at the first iteration
         obj_point = obj_point[:, 0 ,:]
         image_point = image_point.T
         rot_vector = rot_vector.T 
